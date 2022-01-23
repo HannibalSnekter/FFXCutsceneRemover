@@ -273,6 +273,9 @@
         public static MemoryLocationData ItemsStart = new MemoryLocationData(MemoryLocationNames.ItemsStart, 0xD3095C);
         public static MemoryLocationData ItemsQtyStart = new MemoryLocationData(MemoryLocationNames.ItemsQtyStart, 0xD30B5C);
 
+        // AP
+        public static MemoryLocationData CharacterAPFlags = new MemoryLocationData(MemoryLocationNames.CharacterAPFlags, 0x1F10EC4);
+
         // Menu Values - These are values which the game sets during the battle rewards menu which don't get cleaned out properly when we skip straight to the rewards screen.
         //               We set the values to 0x00000000 to clean these out after some skips
         public static MemoryLocationData MenuValue1 = new MemoryLocationData(MemoryLocationNames.MenuValue1, 0x14408AC);

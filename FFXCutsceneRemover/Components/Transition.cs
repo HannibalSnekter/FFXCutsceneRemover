@@ -49,7 +49,7 @@ namespace FFXCutsceneRemover
         public short? RoomNumber = null;
         public short? Storyline = null;
         public short? SpawnPoint = null;
-        public int? BattleState = null;
+        public short? BattleState = null;
         public short? BattleState2 = null;
         public byte? Menu = null;
         public byte? MenuLock = null;
@@ -239,6 +239,8 @@ namespace FFXCutsceneRemover
 
         public byte[] ItemsStart = null;
         public byte[] ItemsQtyStart = null;
+
+        public byte[] CharacterAPFlags = null;
 
         public int? MenuValue1 = null;
         public int? MenuValue2 = null;
@@ -696,6 +698,9 @@ namespace FFXCutsceneRemover
             WriteBytes(memoryWatchers.BattleRewardEquip6, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
             WriteBytes(memoryWatchers.BattleRewardEquip7, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
             WriteBytes(memoryWatchers.BattleRewardEquip8, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+
+            // Clear AP Flags
+            WriteBytes(memoryWatchers.CharacterAPFlags, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
         }
 
         private void PartyOffScreen()

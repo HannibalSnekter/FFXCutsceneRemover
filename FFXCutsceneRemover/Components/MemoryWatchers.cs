@@ -271,9 +271,12 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> BattleRewardEquip7;
         public MemoryWatcher<byte> BattleRewardEquip8;
 
-        //Items
+        // Items
         public MemoryWatcher<byte> ItemsStart;
         public MemoryWatcher<byte> ItemsQtyStart;
+
+        // AP
+        public MemoryWatcher<byte> CharacterAPFlags;
 
         // Menu Values
         public MemoryWatcher<int> MenuValue1;
@@ -558,6 +561,9 @@ namespace FFXCutsceneRemover
             ItemsStart = GetMemoryWatcher<byte>(MemoryLocations.ItemsStart);
             ItemsQtyStart = GetMemoryWatcher<byte>(MemoryLocations.ItemsQtyStart);
 
+            // AP
+            CharacterAPFlags = GetMemoryWatcher<byte>(MemoryLocations.CharacterAPFlags);
+
             // Menu Values
             MenuValue1 = GetMemoryWatcher<int>(MemoryLocations.MenuValue1);
             MenuValue2 = GetMemoryWatcher<int>(MemoryLocations.MenuValue2);
@@ -771,6 +777,7 @@ namespace FFXCutsceneRemover
                     BattleRewardEquip8,
                     ItemsStart,
                     ItemsQtyStart,
+                    CharacterAPFlags,
                     MenuValue1,
                     MenuValue2,
                     ActorArrayLength,

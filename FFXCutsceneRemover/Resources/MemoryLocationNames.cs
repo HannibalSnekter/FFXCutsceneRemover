@@ -219,6 +219,8 @@
         public static string ItemsStart = "ItemsStart";
         public static string ItemsQtyStart = "ItemsQtyStart";
 
+        public static string CharacterAPFlags = "CharacterAPFlags";
+
         public static string MenuValue1 = "MenuValue1";
         public static string MenuValue2 = "MenuValue2";
 
