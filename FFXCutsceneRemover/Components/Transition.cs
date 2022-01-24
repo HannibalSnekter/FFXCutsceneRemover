@@ -199,6 +199,7 @@ namespace FFXCutsceneRemover
         public byte? BikanelFlag = null;
 
         public byte[] Formation = null;
+        public byte[] CharacterNames = null;
         public byte[] RikkuName = null;
 
         public byte? ViaPurificoPlatform = null;
@@ -246,6 +247,7 @@ namespace FFXCutsceneRemover
         public int? MenuValue2 = null;
 
         public byte[] SphereGrid = null;
+        public byte[] SphereGridStartLocations = null;
 
         public virtual void Execute(string defaultDescription = "")
         {
@@ -398,6 +400,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.ThunderPlainsFlag, ThunderPlainsFlag);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
             WriteValue(memoryWatchers.BikanelFlag, BikanelFlag);
+            WriteBytes(memoryWatchers.CharacterNames, CharacterNames);
             WriteBytes(memoryWatchers.RikkuName, RikkuName);
             WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
             WriteValue(memoryWatchers.NatusFlag, NatusFlag);
@@ -439,6 +442,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MenuValue2, MenuValue2);
 
             WriteBytes(memoryWatchers.SphereGrid, SphereGrid);
+            WriteBytes(memoryWatchers.SphereGridStartLocations, SphereGridStartLocations);
 
             if (ForceLoad)
             {

@@ -147,6 +147,7 @@ namespace FFXCutsceneRemover
 
         // Party Configuration
         public MemoryWatcher<byte> Formation;
+        public MemoryWatcher<byte> CharacterNames;
         public MemoryWatcher<byte> RikkuName;
         public MemoryWatcher<byte> EnableTidus;
         public MemoryWatcher<byte> EnableYuna;
@@ -286,6 +287,7 @@ namespace FFXCutsceneRemover
 
         // Rando Specific
         public MemoryWatcher<byte> SphereGrid;
+        public MemoryWatcher<byte> SphereGridStartLocations;
 
         MemoryWatchers() { }
 
@@ -436,6 +438,7 @@ namespace FFXCutsceneRemover
 
             // Party Configuration
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
+            CharacterNames = GetMemoryWatcher<byte>(MemoryLocations.CharacterNames);
             RikkuName = GetMemoryWatcher<byte>(MemoryLocations.RikkuName);
             EnableTidus = GetMemoryWatcher<byte>(MemoryLocations.EnableTidus);
             EnableYuna = GetMemoryWatcher<byte>(MemoryLocations.EnableYuna);
@@ -572,6 +575,7 @@ namespace FFXCutsceneRemover
 
             // Rando Specific
             SphereGrid = GetMemoryWatcher<byte>(MemoryLocations.SphereGrid);
+            SphereGridStartLocations = GetMemoryWatcher<byte>(MemoryLocations.SphereGridStartLocations);
 
             HpEnemyA.FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
 
@@ -781,7 +785,8 @@ namespace FFXCutsceneRemover
                     MenuValue1,
                     MenuValue2,
                     ActorArrayLength,
-                    SphereGrid
+                    SphereGrid,
+                    SphereGridStartLocations
             });
         }
 

@@ -37,18 +37,91 @@ namespace FFXCutsceneRemover
 
         private int index = 0;
 
-        public readonly int[][] startingAbilityNodeLocations = new int[][]
+        readonly short[][] defaultAbilityNodeLocations = new short[][]
         {
-            new int[] { 0, 2 },
-            new int[] { 335, 336 },
-            new int[] { 540, 541 },
-            new int[] { 636, 637 },
-            new int[] { 56, 57 },
-            new int[] { 220, 221 },
-            new int[] { 449, 450 },
+            new short[] { 000, 002 },
+            new short[] { 335, 336 },
+            new short[] { 540, 541 },
+            new short[] { 636, 637 },
+            new short[] { 056, 057 },
+            new short[] { 220, 221 },
+            new short[] { 449, 450 },
         };
 
-        public readonly int[] startingCharacterNodeLocations = new int[] { 0, 341, 540, 637, 56, 224, 448 };
+        readonly short[][] randomStartNodeLocations = new short[][]
+        {
+            new short[] { 000, 002 },
+            new short[] { 010, 539 },
+            new short[] { 011, 828 },
+            new short[] { 026, 027 },
+            new short[] { 034, 035 },
+            new short[] { 038, 041 },
+            new short[] { 049, 050 },
+            new short[] { 056, 057 },
+            new short[] { 071, 072 },
+            new short[] { 081, 082 },
+            new short[] { 089, 806 },
+            new short[] { 096, 156 },
+            new short[] { 111, 116 },
+            new short[] { 124, 123 },
+            new short[] { 135, 702 },
+            new short[] { 141, 142 },
+            new short[] { 146, 822 },
+            new short[] { 166, 744 },
+            new short[] { 174, 173 },
+            new short[] { 181, 182 },
+            new short[] { 191, 192 },
+            new short[] { 199, 200 },
+            new short[] { 212, 538 },
+            new short[] { 214, 129 },
+            new short[] { 224, 221 },
+            new short[] { 243, 245 },
+            new short[] { 246, 748 },
+            new short[] { 268, 529 },
+            new short[] { 289, 747 },
+            new short[] { 313, 314 },
+            new short[] { 325, 304 },
+            new short[] { 327, 328 },
+            new short[] { 340, 343 },
+            new short[] { 351, 352 },
+            new short[] { 359, 361 },
+            new short[] { 368, 369 },
+            new short[] { 383, 384 },
+            new short[] { 394, 699 },
+            new short[] { 405, 406 },
+            new short[] { 415, 416 },
+            new short[] { 422, 421 },
+            new short[] { 429, 485 },
+            new short[] { 441, 440 },
+            new short[] { 448, 449 },
+            new short[] { 454, 455 },
+            new short[] { 470, 469 },
+            new short[] { 489, 497 },
+            new short[] { 490, 491 },
+            new short[] { 504, 503 },
+            new short[] { 516, 517 },
+            new short[] { 553, 554 },
+            new short[] { 571, 572 },
+            new short[] { 582, 583 },
+            new short[] { 590, 591 },
+            new short[] { 601, 016 },
+            new short[] { 603, 836 },
+            new short[] { 618, 740 },
+            new short[] { 634, 633 },
+            new short[] { 636, 637 },
+            new short[] { 644, 641 },
+            new short[] { 668, 667 },
+            new short[] { 687, 686 },
+            new short[] { 693, 684 },
+            new short[] { 697, 769 },
+            new short[] { 706, 705 },
+            new short[] { 725, 726 },
+            new short[] { 776, 773 },
+            new short[] { 805, 092 },
+            new short[] { 855, 851 },
+        };
+
+        readonly short[] defaultCharacterNodeLocations = new short[] { 0, 341, 540, 637, 56, 224, 448 };
 
         public Dictionary<byte, byte[]> abilityMemoryLocations = new Dictionary<byte, byte[]>()
         {
@@ -188,7 +261,36 @@ namespace FFXCutsceneRemover
                 validBytes.Add(0x29); // Lock Lv.4
             }
 
-            // Iterate through the sphere grid picking up all nodes which are to be randomised adding them to a shuffle list
+            short[][] startingAbilityNodeLocations = new short[7][];
+            short[] startingCharacterNodeLocations = new short[7];
+            byte[] startingLocationBytes = new byte[14];
+
+            if (options.RandomiseStartLocations == 1)
+            {
+                LockCount[0] = 30;
+
+                short[][] shuffleLocations = new short[randomStartNodeLocations.Length][];
+                randomStartNodeLocations.CopyTo(shuffleLocations, 0);
+                shuffleLocations.Shuffle();
+
+                for (int i = 0; i < 7; i++)
+                {
+                    startingAbilityNodeLocations[i] = shuffleLocations[i];
+                    startingCharacterNodeLocations[i] = shuffleLocations[i][0];
+                    BitConverter.GetBytes(shuffleLocations[i][0]).CopyTo(startingLocationBytes, 2 * i);
+                    DiagnosticLog.Information("Character " + i.ToString() + " start location: " + shuffleLocations[i][0].ToString());
+                }
+
+                WriteBytes(memoryWatchers.SphereGridStartLocations, startingLocationBytes);
+
+            }
+            else
+            {
+                defaultAbilityNodeLocations.CopyTo(startingAbilityNodeLocations,0);
+                defaultCharacterNodeLocations.CopyTo(startingCharacterNodeLocations, 0);
+            }
+
+            // Iterate through the sphere grid picking up all nodes which are to be randomised adding them to a shuffle list and set activated nodes to 0
             for (int i = 0; i < memorySizeBytes / 2; i++)
             {
                 byte nodeByte = SphereGridBytes[2 * i];
@@ -196,6 +298,8 @@ namespace FFXCutsceneRemover
                 {
                     shuffleBytes.Add(nodeByte);
                 }
+
+                SphereGridBytes[2 * i + 1] = 0x00;
             }
 
             if (options.SwapLockNodes == 1)
@@ -253,7 +357,7 @@ namespace FFXCutsceneRemover
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    int startingLocation = startingAbilityNodeLocations[i][j];
+                    short startingLocation = startingAbilityNodeLocations[i][j];
 
                     byte nodeID = SphereGridBytes[2 * startingLocation];
 
@@ -271,7 +375,7 @@ namespace FFXCutsceneRemover
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    int startingLocation = startingAbilityNodeLocations[i][j];
+                    short startingLocation = startingAbilityNodeLocations[i][j];
 
                     byte nodeID = SphereGridBytes[2 * startingLocation];
 
@@ -289,13 +393,13 @@ namespace FFXCutsceneRemover
             // If any characters are starting on a lock node swap the lock node with the nearest empty node
             for (int i = 0; i < 7; i++)
             {
-                int startingLocation = startingCharacterNodeLocations[i];
+                short startingLocation = startingCharacterNodeLocations[i];
 
                 byte nodeID = SphereGridBytes[2 * startingLocation];
 
                 if (LockIDs.Contains(nodeID))
                 {
-                    int locationID = startingLocation;
+                    short locationID = startingLocation;
                     bool foundEmpty = false;
                     while (!foundEmpty)
                     {
@@ -318,10 +422,11 @@ namespace FFXCutsceneRemover
 
             if (options.TidusStartWithFlee == 1)
             {
-                byte nodeID = SphereGridBytes[0];
+                short locationID = (short)(startingCharacterNodeLocations[0] * 2);
+                byte nodeID = SphereGridBytes[locationID];
                 byte newNodeID = 0x3C; // Flee
                 int newNodeLocation = Array.IndexOf(SphereGridBytes, newNodeID) / 2;
-                SphereGridBytes[0] = newNodeID;
+                SphereGridBytes[locationID] = newNodeID;
                 SphereGridBytes[2 * newNodeLocation] = nodeID;
             }
 
@@ -330,7 +435,7 @@ namespace FFXCutsceneRemover
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    int startingLocation = startingAbilityNodeLocations[i][j];
+                    short startingLocation = startingAbilityNodeLocations[i][j];
 
                     SphereGridBytes[2 * startingLocation + 1] = (byte)Math.Pow(2, i);
                 }
@@ -352,7 +457,7 @@ namespace FFXCutsceneRemover
 
                 for (int j = 0; j < 2; j++)
                 {
-                    int location = startingAbilityNodeLocations[i][j];
+                    short location = startingAbilityNodeLocations[i][j];
                     byte nodeID = SphereGridBytes[location * 2];
                     if (nodeID >= 0x2A)
                     {

@@ -130,6 +130,7 @@
 
         // Party Configuration
         public static string Formation = "Formation";
+        public static string CharacterNames = "CharacterNames";
         public static string RikkuName = "RikkuName";
         public static string EnableTidus = "EnableTidus";
         public static string EnableYuna = "EnableYuna";
@@ -227,6 +228,6 @@
         public static string ActorArrayLength = "ActorArrayLength";
 
         public static string SphereGrid = "SphereGrid";
-
+        public static string SphereGridStartLocations = "SphereGridStartLocations";
     }
 }

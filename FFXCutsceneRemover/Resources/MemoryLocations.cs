@@ -139,6 +139,7 @@
 
         // Party Configuration
         public static MemoryLocationData Formation = new MemoryLocationData(MemoryLocationNames.Formation, 0xD307E8);
+        public static MemoryLocationData CharacterNames = new MemoryLocationData(MemoryLocationNames.CharacterNames, 0xD32E54);
         public static MemoryLocationData RikkuName = new MemoryLocationData(MemoryLocationNames.RikkuName, 0xD32E54);
         public static MemoryLocationData EnableTidus = new MemoryLocationData(MemoryLocationNames.EnableTidus, 0xD32088);
         public static MemoryLocationData EnableYuna = new MemoryLocationData(MemoryLocationNames.EnableYuna, 0xD3211C);
@@ -286,6 +287,7 @@
 
         // Rando Specific Addresses
         public static MemoryLocationData SphereGrid = new MemoryLocationData(MemoryLocationNames.SphereGrid, 0xD2EC7C);
+        public static MemoryLocationData SphereGridStartLocations = new MemoryLocationData(MemoryLocationNames.SphereGridStartLocations, 0xD2FB7C);
 
     }
 
