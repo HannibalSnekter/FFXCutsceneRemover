@@ -244,6 +244,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> ViaPurificoPlatform;
         public MemoryWatcher<byte> NatusFlag;
         public MemoryWatcher<short> CalmLandsFlag;
+        public MemoryWatcher<byte> WantzFlag;
         public MemoryWatcher<short> GagazetCaveFlag;
         public MemoryWatcher<byte> OmegaRuinsFlag;
 
@@ -296,6 +297,9 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MenuValue5;
         public MemoryWatcher<int> MenuValue6;
         public MemoryWatcher<byte> MenuValue7;
+
+        public MemoryWatcher<int> SpeedBoostAmount;
+        public MemoryWatcher<int> SpeedBoostVar1;
 
         public MemoryWatcher<int> ActorArrayLength;
 
@@ -547,6 +551,7 @@ namespace FFXCutsceneRemover
             ViaPurificoPlatform = GetMemoryWatcher<byte>(MemoryLocations.ViaPurificoPlatform);
             NatusFlag = GetMemoryWatcher<byte>(MemoryLocations.NatusFlag);
             CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
+            WantzFlag = GetMemoryWatcher<byte>(MemoryLocations.WantzFlag);
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
             OmegaRuinsFlag = GetMemoryWatcher<byte>(MemoryLocations.OmegaRuinsFlag);
 
@@ -599,6 +604,9 @@ namespace FFXCutsceneRemover
             MenuValue5 = GetMemoryWatcher<byte>(MemoryLocations.MenuValue5);
             MenuValue6 = GetMemoryWatcher<int>(MemoryLocations.MenuValue6);
             MenuValue7 = GetMemoryWatcher<byte>(MemoryLocations.MenuValue7);
+
+            SpeedBoostAmount = GetMemoryWatcher<int>(MemoryLocations.SpeedBoostAmount);
+            SpeedBoostVar1 = GetMemoryWatcher<int>(MemoryLocations.SpeedBoostVar1);
 
             ActorArrayLength = GetMemoryWatcher<int>(MemoryLocations.ActorArrayLength);
 
@@ -786,6 +794,7 @@ namespace FFXCutsceneRemover
                     ViaPurificoPlatform,
                     NatusFlag,
                     CalmLandsFlag,
+                    WantzFlag,
                     GagazetCaveFlag,
                     OmegaRuinsFlag,
                     AurochsTeamBytes,
@@ -830,6 +839,9 @@ namespace FFXCutsceneRemover
                     ActorArrayLength,
                     SphereGrid,
                     SphereGridStartLocations
+                    SpeedBoostAmount,
+                    SpeedBoostVar1,
+                    ActorArrayLength
             });
         }
 

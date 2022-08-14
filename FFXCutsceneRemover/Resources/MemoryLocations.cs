@@ -242,6 +242,7 @@
         public static MemoryLocationData ViaPurificoPlatform = new MemoryLocationData(MemoryLocationNames.ViaPurificoPlatform, 0xD2CC89);
         public static MemoryLocationData NatusFlag = new MemoryLocationData(MemoryLocationNames.NatusFlag, 0xD2CC7C);
         public static MemoryLocationData CalmLandsFlag = new MemoryLocationData(MemoryLocationNames.CalmLandsFlag, 0xD2CD09);
+        public static MemoryLocationData WantzFlag = new MemoryLocationData(MemoryLocationNames.WantzFlag, 0xD2CF06);
         public static MemoryLocationData GagazetCaveFlag = new MemoryLocationData(MemoryLocationNames.GagazetCaveFlag, 0xD2CD55);
         public static MemoryLocationData OmegaRuinsFlag = new MemoryLocationData(MemoryLocationNames.OmegaRuinsFlag, 0xD2CE4E);
 
@@ -296,6 +297,10 @@
         public static MemoryLocationData MenuValue5 = new MemoryLocationData(MemoryLocationNames.MenuValue5, 0x8DED2C, 0x6D0);
         public static MemoryLocationData MenuValue6 = new MemoryLocationData(MemoryLocationNames.MenuValue6, 0x8DED2C, 0x704);
         public static MemoryLocationData MenuValue7 = new MemoryLocationData(MemoryLocationNames.MenuValue7, 0x8CB9D8, 0x10D2E);
+
+        // Booster Values
+        public static MemoryLocationData SpeedBoostAmount = new MemoryLocationData(MemoryLocationNames.SpeedBoostAmount, 0x8E82A4);
+        public static MemoryLocationData SpeedBoostVar1 = new MemoryLocationData(MemoryLocationNames.SpeedBoostVar1, 0x85A068);
 
         // Actor Model Positions
         public static MemoryLocationData ActorArrayLength = new MemoryLocationData(MemoryLocationNames.ActorArrayLength, 0x1FC44E0);

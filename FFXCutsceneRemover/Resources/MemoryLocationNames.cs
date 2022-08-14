@@ -189,6 +189,7 @@
         public static string ViaPurificoPlatform = "ViaPurificoPlatform";
         public static string NatusFlag = "NatusFlag";
         public static string CalmLandsFlag = "CalmLandsFlag";
+        public static string WantzFlag = "WantzFlag";
         public static string GagazetCaveFlag = "GagazetCaveFlag";
         public static string OmegaRuinsFlag = "OmegaRuinsFlag";
 
@@ -238,6 +239,9 @@
         public static string MenuValue5 = "MenuValue5";
         public static string MenuValue6 = "MenuValue6";
         public static string MenuValue7 = "MenuValue7";
+
+        public static string SpeedBoostAmount = "SpeedBoostAmount";
+        public static string SpeedBoostVar1 = "SpeedBoostVar1";
 
         public static string ActorArrayLength = "ActorArrayLength";
 
