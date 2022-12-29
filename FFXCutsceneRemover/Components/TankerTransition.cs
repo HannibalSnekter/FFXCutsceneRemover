@@ -18,12 +18,10 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
 
-                //base.Execute();
-
                 new Transition
                 {
                     EncounterMapID = 86,
-                    EncounterFormationID = 0,
+                    EncounterFormationID2 = 0,
                     ScriptedBattleFlag1 = 1,
                     ScriptedBattleFlag2 = 1,
                     ScriptedBattleVar1 = 0x00014504,

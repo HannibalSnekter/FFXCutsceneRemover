@@ -67,7 +67,8 @@
         public static string UnderwaterRuinsTransition = "UnderwaterRuinsTransition";
         public static string UnderwaterRuinsTransition2 = "UnderwaterRuinsTransition2";
         public static string BeachTransition = "BeachTransition";
-        public static string LagoonTransition = "LagoonTransition";
+        public static string LagoonTransition1 = "LagoonTransition1";
+        public static string LagoonTransition2 = "LagoonTransition2";
         public static string ValeforTransition = "ValeforTransition";
         public static string KimahriTransition = "KimahriTransition";
         public static string YunaBoatTransition = "YunaBoatTransition";
@@ -75,6 +76,7 @@
         public static string EchuillesTransition = "EchuillesTransition";
         public static string GeneauxTransition = "GeneauxTransition";
         public static string KilikaTrialsTransition = "KilikaTrialsTransition";
+        public static string KilikaAntechamberTransition = "KilikaAntechamberTransition";
         public static string IfritTransition = "IfritTransition";
         public static string IfritTransition2 = "IfritTransition2";
         public static string JechtShotTransition = "JechtShotTransition";
@@ -89,6 +91,10 @@
         public static string DjoseTransition = "DjoseTransition";
         public static string IxionTransition = "IxionTransition";
         public static string ExtractorTransition = "ExtractorTransition";
+        public static string SeymoursHouseTransition1 = "SeymoursHouseTransition1";
+        public static string SeymoursHouseTransition2 = "SeymoursHouseTransition2";
+        public static string FarplaneTransition1 = "FarplaneTransition1";
+        public static string FarplaneTransition2 = "FarplaneTransition2";
         public static string TromellTransition = "TromellTransition";
         public static string CrawlerTransition = "CrawlerTransition";
         public static string SeymourTransition = "SeymourTransition";
@@ -127,7 +133,8 @@
 
         //Encounters
         public static string EncounterMapID = "EncounterMapID";
-        public static string EncounterFormationID = "EncounterFormationID";
+        public static string EncounterFormationID1 = "EncounterFormationID1";
+        public static string EncounterFormationID2 = "EncounterFormationID2";
         public static string ScriptedBattleFlag1 = "ScriptedBattleFlag1";
         public static string ScriptedBattleFlag2 = "ScriptedBattleFlag2";
         public static string ScriptedBattleVar1 = "ScriptedBattleVar1";
@@ -182,6 +189,7 @@
         public static string MoonflowFlag2 = "MoonflowFlag2";
         public static string RikkuOutfit = "RikkuOutfit";
         public static string TidusWeaponDamageBoost = "TidusWeaponDamageBoost";
+        public static string GuadosalamShopFlag = "GuadosalamShopFlag";
         public static string ThunderPlainsFlag = "ThunderPlainsFlag";
         public static string MacalaniaFlag = "MacalaniaFlag";
         public static string BikanelFlag = "BikanelFlag";
@@ -196,6 +204,7 @@
         // Blitzball
         public static string AurochsTeamBytes = "AurochsTeamBytes";
         public static string BlitzballBytes = "BlitzballBytes";
+        public static string AurochsPlayer1 = "AurochsPlayer1";
 
         // Battle Rewards
         public static string GilBattleRewards = "GilBattleRewards";
@@ -230,6 +239,8 @@
         public static string ItemsQtyStart = "ItemsQtyStart";
 
         public static string CharacterAPFlags = "CharacterAPFlags";
+
+        public static string MenuTriggerValue = "MenuTriggerValue";
 
         public static string MenuValue1 = "MenuValue1";
         public static string MenuValue2 = "MenuValue2";

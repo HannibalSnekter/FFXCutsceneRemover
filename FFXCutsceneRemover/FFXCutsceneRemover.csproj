@@ -4,7 +4,13 @@
 		<OutputType>Exe</OutputType>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon>FFXCSR_icon.ico</ApplicationIcon>
-    <AssemblyName>FFXRandomiser</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>FFXCSR.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <Version>1.3.0</Version>
+    <PackageIcon>FFXCSR_icon.ico</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/erickt420/FFXCutsceneRemover</RepositoryUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,6 +25,13 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<TargetPath>RandomiserOptions.json</TargetPath>
 		</ContentWithTargetPath>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="FFXCSR_icon.ico">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>

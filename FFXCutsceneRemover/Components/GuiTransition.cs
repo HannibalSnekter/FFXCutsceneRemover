@@ -30,7 +30,7 @@ namespace FFXCutsceneRemover
                 new Transition
                 {
                     EncounterMapID = 27,
-                    EncounterFormationID = 0,
+                    EncounterFormationID2 = 0,
                     ScriptedBattleFlag1 = 1,
                     ScriptedBattleFlag2 = 1,
                     ScriptedBattleVar1 = 0x00004501,
@@ -51,7 +51,6 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.HpEnemyA.Current == 12000 && Stage == 2)
             {
-                DiagnosticLog.Information("Test");
                 Stage += 1;
             }
             else if (base.memoryWatchers.BattleState2.Current == 0 && Stage == 3)
@@ -65,7 +64,7 @@ namespace FFXCutsceneRemover
                     RoomNumber = 247,
                     Storyline = 865,
                     EncounterMapID = 29,
-                    EncounterFormationID = 0,
+                    EncounterFormationID2 = 0,
                     ScriptedBattleFlag1 = 0,
                     ScriptedBattleFlag2 = 1,
                     ScriptedBattleVar1 = 0x00014504,

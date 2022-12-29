@@ -3,6 +3,8 @@ using System;
 using System.Diagnostics;
 using System.Reflection;
 using FFXCutsceneRemover.Logging;
+using System.ComponentModel;
+using System.Linq;
 
 namespace FFXCutsceneRemover
 {
@@ -20,7 +22,9 @@ namespace FFXCutsceneRemover
         public bool ForceLoad = true;
         public bool FullHeal = false;
         public bool MenuCleanup = false;
-        public bool AddItems = false;
+        public bool AddRewardItems = false;
+        public bool AddSinLocation = false;
+        public bool RemoveSinLocation = false;
         public bool PositionPartyOffScreen = false;
         public bool PositionTidusAfterLoad = false;
         public string Description = null;
@@ -29,6 +33,7 @@ namespace FFXCutsceneRemover
         public bool Repeatable = false;
         public bool Suspendable = true;
         public int Stage = 0;
+        public (byte itemref, byte itemqty)[] AddItemsToInventory = null;
 
         public int? ActorArrayLength = null;
         public short[] TargetActorIDs = null;
@@ -70,12 +75,14 @@ namespace FFXCutsceneRemover
         public short? RoomNumberAlt = null;
         public short? CutsceneAlt = null;
         public short? AirshipDestinations = null;
+        public short? AirshipDestinationChange = null;
         public short? AuronOverdrives = null;
         public int? TargetFramerate = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
         public short? EncounterMapID = null;
-        public byte? EncounterFormationID = null;
+        public byte? EncounterFormationID1 = null;
+        public byte? EncounterFormationID2 = null;
         public byte? ScriptedBattleFlag1 = null;
         public byte? ScriptedBattleFlag2 = null;
         public int? ScriptedBattleVar1 = null;
@@ -103,7 +110,8 @@ namespace FFXCutsceneRemover
         public int? UnderwaterRuinsTransition = null;
         public int? UnderwaterRuinsTransition2 = null;
         public int? BeachTransition = null;
-        public int? LagoonTransition = null;
+        public int? LagoonTransition1 = null;
+        public int? LagoonTransition2 = null;
         public int? ValeforTransition = null;
         public int? KimahriTransition = null;
         public int? YunaBoatTransition = null;
@@ -111,6 +119,7 @@ namespace FFXCutsceneRemover
         public int? EchuillesTransition = null;
         public int? GeneauxTransition = null;
         public int? KilikaTrialsTransition = null;
+        public int? KilikaAntechamberTransition = null;
         public int? IfritTransition = null;
         public int? IfritTransition2 = null;
         public int? JechtShotTransition = null;
@@ -125,6 +134,10 @@ namespace FFXCutsceneRemover
         public int? DjoseTransition = null;
         public int? IxionTransition = null;
         public int? ExtractorTransition = null;
+        public int? SeymoursHouseTransition1 = null;
+        public int? SeymoursHouseTransition2 = null;
+        public int? FarplaneTransition1 = null;
+        public int? FarplaneTransition2 = null;
         public int? TromellTransition = null;
         public int? CrawlerTransition = null;
         public int? SeymourTransition = null;
@@ -199,7 +212,7 @@ namespace FFXCutsceneRemover
         public byte? MoonflowFlag2 = null;
         public byte? RikkuOutfit = null;
         public byte? TidusWeaponDamageBoost = null;
-
+        public byte? GuadosalamShopFlag = null;
         public byte? ThunderPlainsFlag = null;
         public byte? MacalaniaFlag = null;
         public byte? BikanelFlag = null;
@@ -210,13 +223,14 @@ namespace FFXCutsceneRemover
 
         public byte? ViaPurificoPlatform = null;
         public byte? NatusFlag = null;
-        public short? CalmLandsFlag = null;
+        public ushort? CalmLandsFlag = null;
         public short? GagazetCaveFlag = null;
         public byte? WantzFlag = null;
         public byte? OmegaRuinsFlag = null;
 
         public byte[] AurochsTeamBytes = null;
         public byte[] BlitzballBytes = null;
+        public byte? AurochsPlayer1 = null;
 
         public int? GilBattleRewards = null;
         public byte? BattleRewardItemCount = null;
@@ -253,6 +267,7 @@ namespace FFXCutsceneRemover
 
         public int? MenuValue1 = null;
         public int? MenuValue2 = null;
+        public int? MenuTriggerValue = null;
 
         public byte[] SphereGrid = null;
         public byte[] SphereGridStartLocations = null;
@@ -297,7 +312,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.TargetFramerate, TargetFramerate);
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
             WriteValue(memoryWatchers.EncounterMapID, EncounterMapID);
-            WriteValue(memoryWatchers.EncounterFormationID, EncounterFormationID);
+            WriteValue(memoryWatchers.EncounterFormationID1, EncounterFormationID1);
+            WriteValue(memoryWatchers.EncounterFormationID2, EncounterFormationID2);
             WriteValue(memoryWatchers.ScriptedBattleFlag1, ScriptedBattleFlag1);
             WriteValue(memoryWatchers.ScriptedBattleFlag2, ScriptedBattleFlag2);
             WriteValue(memoryWatchers.ScriptedBattleVar1, ScriptedBattleVar1);
@@ -323,7 +339,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.UnderwaterRuinsTransition, UnderwaterRuinsTransition);
             WriteValue(memoryWatchers.UnderwaterRuinsTransition2, UnderwaterRuinsTransition2);
             WriteValue(memoryWatchers.BeachTransition, BeachTransition);
-            WriteValue(memoryWatchers.LagoonTransition, LagoonTransition);
+            WriteValue(memoryWatchers.LagoonTransition1, LagoonTransition1);
+            WriteValue(memoryWatchers.LagoonTransition2, LagoonTransition2);
             WriteValue(memoryWatchers.ValeforTransition, ValeforTransition);
             WriteValue(memoryWatchers.KimahriTransition, KimahriTransition);
             WriteValue(memoryWatchers.YunaBoatTransition, YunaBoatTransition);
@@ -331,6 +348,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.EchuillesTransition, EchuillesTransition);
             WriteValue(memoryWatchers.GeneauxTransition, GeneauxTransition);
             WriteValue(memoryWatchers.KilikaTrialsTransition, KilikaTrialsTransition);
+            WriteValue(memoryWatchers.KilikaAntechamberTransition, KilikaAntechamberTransition);
             WriteValue(memoryWatchers.IfritTransition, IfritTransition);
             WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
             WriteValue(memoryWatchers.JechtShotTransition, JechtShotTransition);
@@ -345,6 +363,10 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.DjoseTransition, DjoseTransition);
             WriteValue(memoryWatchers.IxionTransition, IxionTransition);
             WriteValue(memoryWatchers.ExtractorTransition, ExtractorTransition);
+            WriteValue(memoryWatchers.SeymoursHouseTransition1, SeymoursHouseTransition1);
+            WriteValue(memoryWatchers.SeymoursHouseTransition2, SeymoursHouseTransition2);
+            WriteValue(memoryWatchers.FarplaneTransition1, FarplaneTransition1);
+            WriteValue(memoryWatchers.FarplaneTransition2, FarplaneTransition2);
             WriteValue(memoryWatchers.TromellTransition, TromellTransition);
             WriteValue(memoryWatchers.CrawlerTransition, CrawlerTransition);
             WriteValue(memoryWatchers.SeymourTransition, SeymourTransition);
@@ -411,6 +433,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MoonflowFlag2, MoonflowFlag2);
             WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
             WriteValue(memoryWatchers.TidusWeaponDamageBoost, TidusWeaponDamageBoost);
+            WriteValue(memoryWatchers.GuadosalamShopFlag, GuadosalamShopFlag);
             WriteValue(memoryWatchers.ThunderPlainsFlag, ThunderPlainsFlag);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
             WriteValue(memoryWatchers.BikanelFlag, BikanelFlag);
@@ -425,6 +448,7 @@ namespace FFXCutsceneRemover
 
             WriteBytes(memoryWatchers.AurochsTeamBytes, AurochsTeamBytes);
             WriteBytes(memoryWatchers.BlitzballBytes, BlitzballBytes);
+            WriteValue(memoryWatchers.AurochsPlayer1, AurochsPlayer1);
 
             WriteValue(memoryWatchers.GilBattleRewards, GilBattleRewards);
             WriteValue(memoryWatchers.BattleRewardItemCount, BattleRewardItemCount);
@@ -456,6 +480,7 @@ namespace FFXCutsceneRemover
 
             WriteValue(memoryWatchers.MenuValue1, MenuValue1);
             WriteValue(memoryWatchers.MenuValue2, MenuValue2);
+            WriteValue(memoryWatchers.MenuTriggerValue, MenuTriggerValue);
 
             WriteBytes(memoryWatchers.SphereGrid, SphereGrid);
             WriteBytes(memoryWatchers.SphereGridStartLocations, SphereGridStartLocations);
@@ -478,10 +503,27 @@ namespace FFXCutsceneRemover
                 ClearAllBattleRewards();
             }
 
+            if (AddSinLocation)
+            {
+                AddSin();
+            }
+
+            if (RemoveSinLocation)
+            {
+                RemoveSin();
+            }
+
             if (PositionPartyOffScreen)
             {
                 PartyOffScreen();
             }
+
+            if (!(AddItemsToInventory is null))
+            {
+                DiagnosticLog.Information(AddItemsToInventory[0].itemref.ToString());
+                DiagnosticLog.Information(AddItemsToInventory[0].itemqty.ToString());
+                AddItems(AddItemsToInventory);
+            }    
 
             UpdateFormation(Formation);
 
@@ -512,6 +554,11 @@ namespace FFXCutsceneRemover
                 WriteValue<float>(memoryWatchers.TotalDistance, 0.0f);
                 WriteValue<float>(memoryWatchers.CycleDistance, 0.0f);
                 process.Resume();
+                while (memoryWatchers.FrameCounterFromLoad.Current < MoveFrame + 30)
+                {
+                    memoryWatchers.FrameCounterFromLoad.Update(process);
+                }
+                SetActorPosition(TargetActorID: 1, Target_var1: -1);
             }
             else
             {
@@ -663,7 +710,7 @@ namespace FFXCutsceneRemover
             // Clear Gil
             WriteValue<int>(memoryWatchers.GilBattleRewards, 0);
 
-            if (AddItems)
+            if (AddRewardItems)
             {
                 byte[] items = process.ReadBytes(memoryWatchers.ItemsStart.Address, 224);
                 byte[] itemsQty = process.ReadBytes(memoryWatchers.ItemsQtyStart.Address, 112);
@@ -742,6 +789,59 @@ namespace FFXCutsceneRemover
 
             // Clear AP Flags
             WriteBytes(memoryWatchers.CharacterAPFlags, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        }
+
+        private void AddItems((byte itemref, byte itemqty)[] AddItemsToInventory)
+        {
+            byte[] items = process.ReadBytes(memoryWatchers.ItemsStart.Address, 224);
+            byte[] itemsQty = process.ReadBytes(memoryWatchers.ItemsQtyStart.Address, 112);
+
+            bool alreadyExists;
+
+            for (int i = 0; i < AddItemsToInventory.Length; i++)
+            {
+                alreadyExists = false;
+
+                for (int j = 0; j < 112; j++)
+                {
+                    if (items[2 * j] == AddItemsToInventory[i].itemref)
+                    {
+                        alreadyExists = true;
+                        itemsQty[j] += AddItemsToInventory[i].itemqty;
+
+                        break;
+                    }
+                }
+
+                if (alreadyExists == false)
+                {
+                    for (int j = 0; j < 112; j++)
+                    {
+                        if (items[2 * j] == 0xFF && itemsQty[j] == 0)
+                        {
+                            DiagnosticLog.Information($"Adding Item: {AddItemsToInventory[i].itemref}");
+                            items[2 * j] = AddItemsToInventory[i].itemref;
+                            items[2 * j + 1] = 0x20;
+                            itemsQty[j] = AddItemsToInventory[i].itemqty;
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+            WriteBytes(memoryWatchers.ItemsStart, items);
+            WriteBytes(memoryWatchers.ItemsQtyStart, itemsQty);
+        }
+
+        private void AddSin()
+        {
+            WriteValue<short>(memoryWatchers.AirshipDestinations, (short)(memoryWatchers.AirshipDestinations.Current + 512));
+        }
+
+        private void RemoveSin()
+        {
+            WriteValue<short>(memoryWatchers.AirshipDestinations, (short)(memoryWatchers.AirshipDestinations.Current - 512));
         }
 
         private void PartyOffScreen()
@@ -841,17 +941,15 @@ namespace FFXCutsceneRemover
 
         public enum formations
         {
+            Klikk2,
             PreKimahri,
             PostKimahri,
             BoardingSSLiki,
-            //PostSinFin,
             PostEchuilles,
             MachinaFights,
             PreOblitzerator,
             PostOblitzerator,
             PreSahagins,
-            //PreVouivre,
-            //PreGaruda,
             AuronJoinsTheParty,
             PreGui2,
             PostGui,
@@ -885,6 +983,9 @@ namespace FFXCutsceneRemover
             {
                 switch (FormationSwitch)
                 {
+                    case formations.Klikk2:
+                        formation = new byte[] { 0x00, 0x06, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                        break;
                     case formations.PreKimahri:
                         formation = new byte[] { 0x00, 0xFF, 0xFF, 0x01, 0x04, 0x05, 0xFF, 0xFF, 0xFF, 0xFF };
                         break;
@@ -1082,9 +1183,12 @@ namespace FFXCutsceneRemover
 
         public byte[] AddCharacter(byte[] formation, byte Character)
         {
-            int Position = GetFirstEmptyReservePosition(formation);
+            if (Array.IndexOf(formation,0x01) == -1)
+            {
+                int Position = GetFirstEmptyReservePosition(formation);
 
-            formation[Position] = Character;
+                formation[Position] = Character;
+            }
             return formation;
         }
 

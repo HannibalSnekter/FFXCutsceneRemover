@@ -7,21 +7,26 @@ using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
-    class AuronTransition : Transition
+    class KilikaAntechamberTransition : Transition
     {
         public override void Execute(string defaultDescription = "")
         {
-            if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
+            Process process = memoryWatchers.Process;
+            int baseAddress = base.memoryWatchers.GetBaseAddress();
+
+
+            if (Stage == 0)
             {
                 base.Execute();
 
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                Stage = 1;
 
+                Stage += 1;
             }
-            else if (base.memoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x4233) && Stage == 1)
+            else if (base.memoryWatchers.KilikaAntechamberTransition.Current == (BaseCutsceneValue + 0X3CDA) && Stage == 1)
             {
-                WriteValue<int>(base.memoryWatchers.AuronTransition, BaseCutsceneValue + 0x42EE);
+                WriteValue<int>(base.memoryWatchers.KilikaAntechamberTransition, BaseCutsceneValue + 0X3DC6);
+
                 Stage += 1;
             }
         }
