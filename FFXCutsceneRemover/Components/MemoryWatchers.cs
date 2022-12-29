@@ -870,7 +870,7 @@ namespace FFXCutsceneRemover
                     MenuValue7,
                     ActorArrayLength,
                     SphereGrid,
-                    SphereGridStartLocations
+                    SphereGridStartLocations,
                     SpeedBoostAmount,
                     SpeedBoostVar1,
                     ActorArrayLength
