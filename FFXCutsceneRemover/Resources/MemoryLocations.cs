@@ -1,9 +1,9 @@
 ﻿namespace FFXCutsceneRemover.Resources
 {
     /* Create MemoryLocationData objects for all of your new memory addresses. You can add a deep pointer by specifying 1 or
-     * more additional offsets. 
+     * more additional offsets.
      *      new MemoryLocationData(MemoryLocationNames.Example, 0x00F2FD00, 0x124);
-     *      
+     *
      * To specify more than 1 additional offset, pass the additional offsets as an array:
      *      new MemoryLocationData(MemoryLocationNames.Example, 0x00F2FD00, { 0x124, 0xD24, ... }); */
     static class MemoryLocations
@@ -180,37 +180,37 @@
         public static MemoryLocationData TidusMaxHP = new MemoryLocationData("TidusMaxHP", 0xD32080);
         public static MemoryLocationData TidusMP = new MemoryLocationData("TidusMP", 0xD3207C);
         public static MemoryLocationData TidusMaxMP = new MemoryLocationData("TidusMaxMP", 0xD32084);
-        
+
         public static MemoryLocationData YunaHP = new MemoryLocationData("YunaHP", 0xD3210C);
         public static MemoryLocationData YunaMaxHP = new MemoryLocationData("YunaMaxHP", 0xD32114);
         public static MemoryLocationData YunaMP = new MemoryLocationData("YunaMP", 0xD32110);
         public static MemoryLocationData YunaMaxMP = new MemoryLocationData("YunaMaxMP", 0xD32118);
-        
+
         public static MemoryLocationData AuronHP = new MemoryLocationData("AuronHP", 0xD321A0);
         public static MemoryLocationData AuronMaxHP = new MemoryLocationData("AuronMaxHP", 0xD321A8);
         public static MemoryLocationData AuronMP = new MemoryLocationData("AuronMP", 0xD321A4);
         public static MemoryLocationData AuronMaxMP = new MemoryLocationData("AuronMaxMP", 0xD321AC);
-        
+
         public static MemoryLocationData KimahriHP = new MemoryLocationData("KimahriHP", 0xD32234);
         public static MemoryLocationData KimahriMaxHP = new MemoryLocationData("KimahriMaxHP", 0xD3223C);
         public static MemoryLocationData KimahriMP = new MemoryLocationData("KimahriMP", 0xD32238);
         public static MemoryLocationData KimahriMaxMP = new MemoryLocationData("KimahriMaxMP", 0xD32240);
-        
+
         public static MemoryLocationData WakkaHP = new MemoryLocationData("WakkaHP", 0xD322C8);
         public static MemoryLocationData WakkaMaxHP = new MemoryLocationData("WakkaMaxHP", 0xD322D0);
         public static MemoryLocationData WakkaMP = new MemoryLocationData("WakkaMP", 0xD322CC);
         public static MemoryLocationData WakkaMaxMP = new MemoryLocationData("WakkaMaxMP", 0xD322D4);
-        
+
         public static MemoryLocationData LuluHP = new MemoryLocationData("LuluHP", 0xD3235C);
         public static MemoryLocationData LuluMaxHP = new MemoryLocationData("LuluMaxHP", 0xD32364);
         public static MemoryLocationData LuluMP = new MemoryLocationData("LuluMP", 0xD32360);
         public static MemoryLocationData LuluMaxMP = new MemoryLocationData("LuluMaxMP", 0xD32368);
-        
+
         public static MemoryLocationData RikkuHP = new MemoryLocationData("RikkuHP", 0xD323F0);
         public static MemoryLocationData RikkuMaxHP = new MemoryLocationData("RikkuMaxHP", 0xD323F8);
         public static MemoryLocationData RikkuMP = new MemoryLocationData("RikkuMP", 0xD323F4);
         public static MemoryLocationData RikkuMaxMP = new MemoryLocationData("RikkuMaxMP", 0xD323FC);
-        
+
         // Aeons
         // Only adding Valefor (for now?), as this is currently the only aeon that could affect speedruns
         public static MemoryLocationData ValeforHP = new MemoryLocationData("ValeforHP", 0xD32518);
@@ -316,6 +316,9 @@
 
         // Actor Model Positions
         public static MemoryLocationData ActorArrayLength = new MemoryLocationData(MemoryLocationNames.ActorArrayLength, 0x1FC44E0);
+
+        // RNGmod
+        public static MemoryLocationData RNGArrayOpBytes = new MemoryLocationData(MemoryLocationNames.RNGArrayOpBytes, 0x398903);
 
         // Rando Specific Addresses
         public static MemoryLocationData SphereGrid = new MemoryLocationData(MemoryLocationNames.SphereGrid, 0xD2EC7C);

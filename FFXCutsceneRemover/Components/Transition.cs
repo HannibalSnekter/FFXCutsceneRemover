@@ -269,6 +269,8 @@ namespace FFXCutsceneRemover
         public int? MenuValue2 = null;
         public int? MenuTriggerValue = null;
 
+        public byte[] RNGArrayOpBytes = null;
+
         public byte[] SphereGrid = null;
         public byte[] SphereGridStartLocations = null;
 
@@ -482,6 +484,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MenuValue2, MenuValue2);
             WriteValue(memoryWatchers.MenuTriggerValue, MenuTriggerValue);
 
+            WriteBytes(memoryWatchers.RNGArrayOpBytes, RNGArrayOpBytes);
+
             WriteBytes(memoryWatchers.SphereGrid, SphereGrid);
             WriteBytes(memoryWatchers.SphereGridStartLocations, SphereGridStartLocations);
 
@@ -520,10 +524,8 @@ namespace FFXCutsceneRemover
 
             if (!(AddItemsToInventory is null))
             {
-                DiagnosticLog.Information(AddItemsToInventory[0].itemref.ToString());
-                DiagnosticLog.Information(AddItemsToInventory[0].itemqty.ToString());
                 AddItems(AddItemsToInventory);
-            }    
+            }
 
             UpdateFormation(Formation);
 
@@ -554,11 +556,6 @@ namespace FFXCutsceneRemover
                 WriteValue<float>(memoryWatchers.TotalDistance, 0.0f);
                 WriteValue<float>(memoryWatchers.CycleDistance, 0.0f);
                 process.Resume();
-                while (memoryWatchers.FrameCounterFromLoad.Current < MoveFrame + 30)
-                {
-                    memoryWatchers.FrameCounterFromLoad.Update(process);
-                }
-                SetActorPosition(TargetActorID: 1, Target_var1: -1);
             }
             else
             {

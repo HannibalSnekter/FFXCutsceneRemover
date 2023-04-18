@@ -314,6 +314,8 @@ namespace FFXCutsceneRemover
 
         public MemoryWatcher<int> ActorArrayLength;
 
+        public MemoryWatcher<byte> RNGArrayOpBytes;
+
         // Rando Specific
         public MemoryWatcher<byte> SphereGrid;
         public MemoryWatcher<byte> SphereGridStartLocations;
@@ -632,6 +634,9 @@ namespace FFXCutsceneRemover
 
             ActorArrayLength = GetMemoryWatcher<int>(MemoryLocations.ActorArrayLength);
 
+            // RNGMod
+            RNGArrayOpBytes = GetMemoryWatcher<byte>(MemoryLocations.RNGArrayOpBytes);
+
             // Rando Specific
             SphereGrid = GetMemoryWatcher<byte>(MemoryLocations.SphereGrid);
             SphereGridStartLocations = GetMemoryWatcher<byte>(MemoryLocations.SphereGridStartLocations);
@@ -873,7 +878,8 @@ namespace FFXCutsceneRemover
                     SphereGridStartLocations,
                     SpeedBoostAmount,
                     SpeedBoostVar1,
-                    ActorArrayLength
+                    ActorArrayLength,
+                    RNGArrayOpBytes
             });
         }
 

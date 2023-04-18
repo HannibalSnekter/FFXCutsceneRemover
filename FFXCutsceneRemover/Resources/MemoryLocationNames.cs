@@ -256,6 +256,8 @@
 
         public static string ActorArrayLength = "ActorArrayLength";
 
+        public static string RNGArrayOpBytes = "RNGArrayOpBytes";
+
         public static string SphereGrid = "SphereGrid";
         public static string SphereGridStartLocations = "SphereGridStartLocations";
     }
