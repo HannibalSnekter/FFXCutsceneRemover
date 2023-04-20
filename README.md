@@ -16,7 +16,7 @@ Includes a randomiser which will randomise the following aspects of the game (Op
 
 * Sphere grid randomisation has been designed for use with the Standard Sphere Grid and no testing has been done on the Expert Sphere Grid.
 
-* This mod is designed and tested to be used for speedruns only. Using this mod for normal playthroughs is not supported, and the unexpected behaviour may cause game-breaking bugs. If you use this mod for normal playthroughs, it is strongly recommended to manually save regularly and not rely on auto-saves.
+* CSR is designed and tested to be used for speedruns only. Using this mod for normal playthroughs is not supported, and the unexpected behaviour may cause game-breaking bugs. If you use this mod for normal playthroughs, it is strongly recommended to manually save regularly and not rely on auto-saves.
 
 * This mod currently only works on Windows using the Steam release of FFX.
 
@@ -29,7 +29,6 @@ Includes a randomiser which will randomise the following aspects of the game (Op
 3. Launch Final Fantasy X.
 
 The order in which you launch the mod and the game does not matter.
-You do not need to start a new game in order to gain the effects of the mod, however, if you start from a save file you may find that it takes a while before the cutscenes start skipping.
 
 ### Arguments:
 You can use multiple arguments by separating them with a space.
