@@ -19,7 +19,6 @@ namespace FFXCutsceneRemover
         // Print out the name and value of every memory
         // address each iteration of the main loop
         private readonly bool PrintDebugValues = true;
-        private readonly bool Randomiser = true;
 
         public Process Game;
         private bool InBossFight = false;
@@ -69,18 +68,6 @@ namespace FFXCutsceneRemover
                 foreach (var transition in standardTransitions)
                 {
                     transition.Value.Stage = 0;
-                }
-            }
-
-            Dictionary<IGameState, Transition> randomiserTransitions = Transitions.RandomiserTransitions;
-            if (Randomiser)
-            {
-                foreach (var transition in randomiserTransitions)
-                {
-                    if (transition.Key.CheckState() && MemoryWatchers.ForceLoad.Current == 0)
-                    {
-                        ExecuteTransition(transition.Value, "Executing Randomiser Transition - No Description");
-                    }
                 }
             }
 

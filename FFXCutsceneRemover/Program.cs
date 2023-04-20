@@ -15,6 +15,7 @@ namespace FFXCutsceneRemover
 
         private static CutsceneRemover cutsceneRemover = null;
         private static RNGMod rngMod = null;
+        private static Randomiser randomiser = null;
 
         private static readonly MemoryWatchers MemoryWatchers = MemoryWatchers.Instance;
 
@@ -80,6 +81,10 @@ namespace FFXCutsceneRemover
 
                 startGameText = new List<(string, byte)> { };
 
+                randomiser = new Randomiser();
+                randomiser.Game = Game;
+                startGameText.Add(("FFX Randomiser", 0x49));
+
                 if (removeCutscenes)
                 {
                     cutsceneRemover = new CutsceneRemover(debug, loopSleepMillis);
@@ -112,6 +117,8 @@ namespace FFXCutsceneRemover
                     {
                         newGameMenuUpdated = false;
                     }
+
+                    randomiser.MainLoop(MemoryWatchers);
 
                     if (removeCutscenes)
                     {

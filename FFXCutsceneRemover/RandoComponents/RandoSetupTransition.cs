@@ -229,7 +229,7 @@ namespace FFXCutsceneRemover
             Process process = memoryWatchers.Process;
             int baseAddress = base.memoryWatchers.GetBaseAddress();
 
-            int memorySizeBytes = 1714;
+            int memorySizeBytes = 1720;
             SphereGridBytes = process.ReadBytes(memoryWatchers.SphereGrid.Address, memorySizeBytes);
 
             validBytes.Clear();
